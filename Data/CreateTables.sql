@@ -8,12 +8,11 @@
 
 
 if object_id('PLAYERSTATS') is not null drop table PLAYERSTATS;
-if object_id('COAROS') is not null drop table COAROS;
-if object_id('PLAPOS') is not null drop table PLAPOS;
+if object_id('COACHROSTER') is not null drop table COACHROSTER;
+if object_id('PLAYERPOSITION') is not null drop table PLAYERPOSITION;
 if object_id('GAMEPREDICTION') is not null drop table GAMEPREDICTION;
-if object_id('APPGAM') is not null drop table APPGAM;
 if object_id('WEEKLYPREDICTIONRESULTS') is not null drop table WEEKLYPREDICTIONRESULTS;
-if object_id('APPTEA') is not null drop table APPTEA;
+if object_id('APPTEAM') is not null drop table APPTEA;
 if object_id('APPUSER') is not null drop table APPUSER;
 if object_id('COACH') is not null drop table COACH;
 if object_id('POSITION') is not null drop table POSITION;
@@ -76,17 +75,18 @@ go
 
 create table APPUSER (
     AppUserID INT NOT NULL IDENTITY(1,1),
-    FirstName VARCHAR(50) NOT NULL,     
-    Email VARCHAR(100) NOT NULL,
-    Password VARCHAR(100) NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    AppUserEmail VARCHAR(100) NOT NULL,
+    AppUserPassword VARCHAR(100) NOT NULL,
     constraint PK_AppUser Primary Key (AppUserID),
-    constraint UQ_AppUser_Email UNIQUE (Email)
+    constraint UQ_AppUser_Email UNIQUE (AppUserEmail)
 );
 
 
 go 
 
-create table APPTEA (
+create table APPTEAM (
     TeamID INT NOT NULL,
     AppUserID INT NOT NULL,
     constraint PK_AppTeam Primary Key (TeamID, AppUserID),
@@ -164,7 +164,7 @@ create table POSITION (
 
 go  
 
-CREATE TABLE PLAPOS (
+CREATE TABLE PLAYERPOSITION (
     PlayerID INT NOT NULL,
     PositionID INT NOT NULL,
     constraint PK_PlayerPosition Primary Key (PlayerID, PositionID),
@@ -183,7 +183,7 @@ CREATE TABLE COACH (
 
 go 
 
-create table COAROS (
+create table COACHROSTER (
     CoachID INT NOT NULL,
     RosterID INT NOT NULL,
     constraint PK_CoachRoster Primary Key (CoachID, RosterID),
