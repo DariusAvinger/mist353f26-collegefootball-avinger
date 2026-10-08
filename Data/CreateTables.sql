@@ -153,16 +153,6 @@ create table PLAYER (
 
 go
 
-create table PLAYERROSTER (
-    PlayerID INT NOT NULL,
-    RosterID INT NOT NULL,
-    constraint PK_PlayerRoster Primary Key (PlayerID, RosterID),
-    constraint FK_PlayerRoster_Player FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID),
-    constraint FK_PlayerRoster_Roster FOREIGN KEY (RosterID) REFERENCES ROSTER(RosterID)
-);
-
-go
-
 create table POSITION (
     PositionID INT NOT NULL IDENTITY(1,1),
     PositionName VARCHAR(50) NOT NULL,
