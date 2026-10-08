@@ -12,7 +12,7 @@ if object_id('COACHROSTER') is not null drop table COACHROSTER;
 if object_id('PLAYERPOSITION') is not null drop table PLAYERPOSITION;
 if object_id('GAMEPREDICTION') is not null drop table GAMEPREDICTION;
 if object_id('WEEKLYPREDICTIONRESULTS') is not null drop table WEEKLYPREDICTIONRESULTS;
-if object_id('APPTEAM') is not null drop table APPTEA;
+if object_id('APPUSERTEAM') is not null drop table APPUSERTEAM;
 if object_id('APPUSER') is not null drop table APPUSER;
 if object_id('COACH') is not null drop table COACH;
 if object_id('POSITION') is not null drop table POSITION;
@@ -86,12 +86,13 @@ create table APPUSER (
 
 go 
 
-create table APPTEAM (
+create table APPUSERTEAM (
     TeamID INT NOT NULL,
     AppUserID INT NOT NULL,
-    constraint PK_AppTeam Primary Key (TeamID, AppUserID),
-    constraint FK_AppTeam_Team FOREIGN KEY (TeamID) REFERENCES TEAM(TeamID),
-    constraint FK_AppTeam_AppUser FOREIGN KEY (AppUserID) REFERENCES APPUSER(AppUserID)
+    constraint UQ_AppUserTeam UNIQUE (AppUserID,TeamID),
+    constraint PK_AppUserTeam Primary Key (AppUserID),
+    constraint FK_AppUserTeam_Team FOREIGN KEY (TeamID) REFERENCES TEAM(TeamID),
+    constraint FK_AppUserTeam_AppUser FOREIGN KEY (AppUserID) REFERENCES APPUSER(AppUserID)
 );
 
 
