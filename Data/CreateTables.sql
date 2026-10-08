@@ -151,6 +151,15 @@ create table PLAYER (
     constraint PK_Player Primary Key (PlayerID)
 );
 
+go
+
+create table PLAYERROSTER (
+    PlayerID INT NOT NULL,
+    RosterID INT NOT NULL,
+    constraint PK_PlayerRoster Primary Key (PlayerID, RosterID),
+    constraint FK_PlayerRoster_Player FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID),
+    constraint FK_PlayerRoster_Roster FOREIGN KEY (RosterID) REFERENCES ROSTER(RosterID)
+);
 
 go
 
@@ -190,4 +199,8 @@ create table COACHROSTER (
     constraint FK_CoachRoster_Coach FOREIGN KEY (CoachID) REFERENCES COACH(CoachID),
     constraint FK_CoachRoster_Roster FOREIGN KEY (RosterID) REFERENCES ROSTER(RosterID)
 );
+
+go
+
+
 
