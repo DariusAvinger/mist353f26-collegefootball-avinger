@@ -6,13 +6,12 @@
 
 
 
-
-if object_id('PLAYERSTATS') is not null drop table PLAYERSTATS;
-if object_id('COACHROSTER') is not null drop table COACHROSTER;
+if object_id('APPUSERTEAM') is not null drop table APPUSERTEAM;
 if object_id('PLAYERPOSITION') is not null drop table PLAYERPOSITION;
+if object_id('COACHROSTER') is not null drop table COACHROSTER;
+if object_id('PLAYERSTATS') is not null drop table PLAYERSTATS;
 if object_id('GAMEPREDICTION') is not null drop table GAMEPREDICTION;
 if object_id('WEEKLYPREDICTIONRESULTS') is not null drop table WEEKLYPREDICTIONRESULTS;
-if object_id('APPUSERTEAM') is not null drop table APPUSERTEAM;
 if object_id('APPUSER') is not null drop table APPUSER;
 if object_id('COACH') is not null drop table COACH;
 if object_id('POSITION') is not null drop table POSITION;
