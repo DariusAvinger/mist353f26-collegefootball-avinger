@@ -137,14 +137,12 @@ create table GAMEPREDICTION (
 go
 
 create table WEEKLYPREDICTIONRESULTS (
-    WPRID INT NOT NULL IDENTITY(1,1),
     AppUserID INT NOT NULL,
     StartDate DATE NOT NULL,
     NumberOfCorrectPredictions INT NOT NULL
         constraint DF_WPR_Correct DEFAULT 0,
     TotalDifferenceFromPredictedMargins INT NOT NULL 
         constraint DF_WPR_MarginDiff DEFAULT 0,
-    constraint PK_WPR Primary Key (WPRID),
     constraint UQ_WPR_UserWeek UNIQUE (AppUserID, StartDate),
     constraint FK_WPR_AppUser FOREIGN KEY (AppUserID) REFERENCES APPUSER(AppUserID),
     constraint CK_WPR_NonNegative CHECK (NumberOfCorrectPredictions >= 0 AND TotalDifferenceFromPredictedMargins >= 0)
@@ -221,12 +219,10 @@ create table PLAYERSTATS (
     PlayerStatsID INT NOT NULL IDENTITY(1,1),
     PlayerID INT NOT NULL,
     RosterID INT NOT NULL,
-    PositionID INT NOT NULL,
     constraint PK_PlayerStats Primary Key (PlayerStatsID),
-    constraint UQ_PlayerStats UNIQUE (PlayerID, RosterID, PositionID),
+    constraint UQ_PlayerStats UNIQUE (PlayerID, RosterID),
     constraint FK_PlayerStats_Player FOREIGN KEY (PlayerID) REFERENCES PLAYER(PlayerID),
     constraint FK_PlayerStats_Roster FOREIGN KEY (RosterID) REFERENCES ROSTER(RosterID),
-    constraint FK_PlayerStats_Position FOREIGN KEY (PositionID) REFERENCES POSITION(PositionID)
 );
 
 go
