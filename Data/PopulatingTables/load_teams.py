@@ -14,14 +14,14 @@ import requests
 
 CONN_STR = (
     "Driver={ODBC Driver 18 for SQL Server};"
-    "Server=;"
-    "Database=;"
-    "Uid=;"
-    "Pwd=;"
+    "Server=mist353f26-avinger-server.database.windows.net;"
+    "Database=;CollegeFootballRDBAvinger"
+    "Uid=NandaSurendra;"
+    "Pwd='MI$T353Instructor';"
     "Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 )
 
-API_KEY = ""
+API_KEY = "yvQjAaOr9jSfTFFFwxKJwKuye5deup+gT83ldi7L601KERzscGzBOzmB9m5Oyqqf"
 
 BASE_URL = "https://api.collegefootballdata.com"
 HEADERS = {"Authorization": f"Bearer {API_KEY}", "Accept": "application/json"}
